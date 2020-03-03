@@ -1,0 +1,2 @@
+include ":CoffeeForged"
+project(":CoffeeForged").projectDir = file("../CoffeeForged") 

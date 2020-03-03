@@ -191,8 +191,8 @@ public class Values {
                 InfoEvent evt = new InfoEvent(value);
                 if (value.isArgumentPos()) {
                     IBlockState state = value.getPosArgument().getBlockState(Functions.getWorldServerForDimensionId(value.getPosArgument().getDimension()));
-                    evt.addInfo("unlocalized-name", state.getBlock().getUnlocalizedName());
-                    evt.addInfo("localized-name", I18n.translateToLocal(state.getBlock().getLocalizedName()));
+                    evt.addInfo("unlocalized-name", state.getBlock().getRegistryName().toString());
+                    evt.addInfo("localized-name", state.getBlock().getLocalizedName());
                     evt.addInfo("coords", value.getPosArgument());
                 }
                 MinecraftForge.EVENT_BUS.post(evt);
@@ -234,8 +234,8 @@ public class Values {
         //Return a single Key-Value pair of strings.
         Map<String, Object> ret = new HashMap<>();
         IBlockState state = loc.getBlockState(getWorldServerForDimensionId(loc.getDimension()));
-        ret.put("unlocalized-name", state.getBlock().getUnlocalizedName());
-        ret.put("localized-name", I18n.translateToLocal(state.getBlock().getLocalizedName()));
+        ret.put("unlocalized-name", state.getBlock().getRegistryName().toString());
+        ret.put("localized-name", state.getBlock().getLocalizedName());
         ret.put("coords", loc);
         
         
@@ -249,7 +249,7 @@ public class Values {
                 Map<String, Object> itemMap = new HashMap<>();
                 ItemStack itemStack = cap.getStackInSlot(i);
                 if (itemStack != null) {
-                    itemMap.put("unlocalized-name", itemStack.getUnlocalizedName());
+                    itemMap.put("unlocalized-name", itemStack.getItem().getRegistryName().toString());
                     itemMap.put("localized-name", itemStack.getDisplayName());
                     itemMap.put("stacksize", itemStack.getCount());
                     itemMap.put("metadata", itemStack.getMetadata());
@@ -294,8 +294,8 @@ public class Values {
         }
         
         IBlockState state = loc.getBlockState(getWorldServerForDimensionId(loc.getDimension()));
-        ret.put("unlocalized-name", state.getBlock().getUnlocalizedName());
-        ret.put("localized-name", I18n.translateToLocal(state.getBlock().getLocalizedName()));
+        ret.put("unlocalized-name", state.getBlock().getRegistryName().toString());
+        ret.put("localized-name", state.getBlock().getLocalizedName());
         ret.put("coords", loc);
         Map<String, Map<String, Object>> properties = new HashMap<>();
         for (Map.Entry<IProperty<?>, Comparable<?>> entry : state.getProperties().entrySet()) {
@@ -337,8 +337,8 @@ public class Values {
         //Return a single Key-Value pair of strings.
         Map<String, Object> ret = new HashMap<>();
         IBlockState state = loc.getBlockState(getWorldServerForDimensionId(loc.getDimension()));
-        ret.put("unlocalized-name", state.getBlock().getUnlocalizedName());
-        ret.put("localized-name", I18n.translateToLocal(state.getBlock().getLocalizedName()));
+        ret.put("unlocalized-name", state.getBlock().getRegistryName().toString());
+        ret.put("localized-name", state.getBlock().getLocalizedName());
         ret.put("coords", loc);
         
         TileEntity tileEntity = loc.getTE(getWorldServerForDimensionId(loc.getDimension()));
