@@ -62,8 +62,11 @@ public class Players {
         builder = builder.setPrettyPrinting();
         Gson gson = builder.create();
         String endString = gson.toJson(playerList);
-
-        String p = DimensionManager.getCurrentSaveRootDirectory().getAbsolutePath();
+        File ff = DimensionManager.getCurrentSaveRootDirectory();
+        if (ff == null) {
+        	return;
+        }
+        String p = ff.getAbsolutePath();
 
         File d = new File(p + "/sip/");
 

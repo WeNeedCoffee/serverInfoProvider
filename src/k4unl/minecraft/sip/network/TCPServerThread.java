@@ -51,7 +51,7 @@ public class TCPServerThread implements Runnable {
         
         while (keepRunning) {
             try {
-                if (serverSocket == null) {
+                if (serverSocket == null || serverSocket.isClosed()) {
                     break;
                 }
                 final Socket connectionSocket = serverSocket.accept();
